@@ -1,8 +1,5 @@
-const os = require('os');
-const fs = require('fs');
 const net = require('net');
 const http = require('http');
-const axios = require('axios');
 const { Buffer } = require('buffer');
 const { exec, execSync } = require('child_process');
 
