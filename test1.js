@@ -669,7 +669,7 @@ const server = http.createServer((req, res) => {
     } 
     
     if (req.url === `/${SUB_PATH}`) {
-        const vlessURL = `vless://${UUID}@${IP}:443?encryption=none&security=tls&${IP}&fp=chrome&allowInsecure=1&type=xhttp&host=${IP}&path=${SETTINGS.XPATH}&mode=packet-up#${NAME}-${ISP}`; 
+        const vlessURL = `vless://${UUID}@${IP}:443?encryption=none&security=tls&${IP}&fp=chrome&allowInsecure=1&type=xhttp&host=${IP}&path=%2F${XPATH}&mode=packet-up#${NAME}-${ISP}`; 
         const base64Content = Buffer.from(vlessURL).toString('base64');
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end(base64Content + '\n');
@@ -798,11 +798,4 @@ server.on('error', (err) => {
 server.listen(PORT, () => {
     addAccessTask();
     console.log(`Server is running on port ${PORT}`);
-    log('info', `=================================`);
-    log('info', `Log level: ${SETTINGS.LOG_LEVEL}`);
-    log('info', `Max buffered posts: ${SETTINGS.MAX_BUFFERED_POSTS}`);
-    log('info', `Max POST size: ${SETTINGS.MAX_POST_SIZE}KB`);
-    log('info', `Max buffer size: ${SETTINGS.BUFFER_SIZE}KB`)
-    log('info', `Session timeout: ${SETTINGS.CHUNK_SIZE}bytes`);
-    log('info', `=================================`);
 });
